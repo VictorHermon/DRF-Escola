@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-
 import rest_framework.permissions
 from dotenv import load_dotenv
 
@@ -153,6 +152,24 @@ REST_FRAMEWORK = {
     }
 }
 
+
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000'
 ]
+
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/1',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient'
+        }
+    }
+}
+
+CACHE_TTS = 20
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+
+SESSION_CACHE_ALIAS = 'default'
