@@ -1,4 +1,3 @@
-import http
 from rest_framework import viewsets, generics, status
 from escola.models import Aluno, Curso, Matricula
 from escola.serializer import *
@@ -31,6 +30,9 @@ class CursosViewSet(viewsets.ModelViewSet):
             response = Response(serializer.data, status=status.HTTP_201_CREATED)
             id = str(serializer.data['id'])
             response['Location'] = request.build_absolute_uri() + id
+            return response
+        else:
+            response = Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             return response
 
 
