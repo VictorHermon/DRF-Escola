@@ -8,10 +8,10 @@ class CursoTestCase(APITestCase):
 
     def setUp(self):
         self.list_url = reverse('Cursos-list')
-        self.curso_1 = Curso(
+        self.curso_1 = Curso.objects.create(
             codigo_curso='CTT1', descricao='Curso de Teste 01', nivel='B'
         )
-        self.curso_2 = Curso(
+        self.curso_2 = Curso.objects.create(
             codigo_curso='CTT2', descricao='Curso de Teste 02', nivel='A'
         )
 
@@ -34,7 +34,7 @@ class CursoTestCase(APITestCase):
         self.assertEquals(response.status_code, status.HTTP_201_CREATED)
 
     def test_requisicao_delete_para_deletar_curso(self):
-        """Teste para verofocar a requisição delete não permitida para deletar um curso"""
+        """Teste para verificar a requisição DELETE não permitida para deletar um curso"""
         response = self.client.delete('/cursos/1/')
         self.assertEquals(response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
 
