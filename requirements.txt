@@ -3,7 +3,9 @@ async-timeout==4.0.2
 defusedxml==0.7.1
 Deprecated==1.2.13
 Django==4.0.4
+django-admin-honeypot==1.1.0
 django-cors-headers==3.11.0
+django-ipware==4.0.2
 django-redis==5.2.0
 djangorestframework==3.13.1
 djangorestframework-xml==2.0.0
